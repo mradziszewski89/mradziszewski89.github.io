@@ -8,7 +8,7 @@ tags: [SharePoint, CVE, ZeroDay, CyberSecurity, PatchTuesday, OnPremise]
 
 ## 🚨 Wprowadzenie
 
-Kwietniowy Patch Tuesday 2026 zapisze się jako jeden z najważniejszych w kontekście bezpieczeństwa infrastruktury Microsoft. :contentReference[oaicite:0]{index=0} opublikował **165 podatności (CVE)** w jednej rundzie – to drugi najwyższy wynik w historii.
+Kwietniowy Patch Tuesday 2026 zapisze się jako jeden z najważniejszych w kontekście bezpieczeństwa infrastruktury Microsoft. Microsoft opublikował **165 podatności (CVE)** w jednej rundzie – to drugi najwyższy wynik w historii.
 
 Wśród nich szczególnie wyróżnia się jedna:  
 **CVE-2026-32201 – aktywnie wykorzystywany zero-day w Microsoft SharePoint.**
@@ -24,7 +24,7 @@ Wśród nich szczególnie wyróżnia się jedna:
   - SharePoint Server 2019  
   - SharePoint Subscription Edition  
 - **Status:** aktywnie wykorzystywana w atakach  
-- **Dodana do katalogu :contentReference[oaicite:1]{index=1} KEV:** 14 kwietnia 2026  
+- **Dodana do katalogu KEV:** 14 kwietnia 2026
 - **Deadline dla instytucji federalnych:** 28 kwietnia 2026  
 
 ---
@@ -58,7 +58,7 @@ W praktyce CVE-2026-32201 umożliwia:
 
 ### 3. Ruch lateralny w sieci
 - dostęp do zasobów SharePoint
-- pivot do innych systemów (np. :contentReference[oaicite:2]{index=2}, :contentReference[oaicite:3]{index=3})
+- pivot do innych systemów wspierających
 - eskalacja dostępu w środowisku
 
 ---
@@ -82,7 +82,7 @@ Jak zauważa Mat Lee (Automox):
 
 ## 🌍 Skala problemu
 
-Dane :contentReference[oaicite:4]{index=4} z 20 kwietnia 2026 wskazują:
+Dane z 20 kwietnia 2026 wskazują:
 
 - **ponad 1 370 podatnych instancji SharePoint online**
 - systemy niezałatane ponad tydzień po publikacji patcha
@@ -121,3 +121,24 @@ Zainstaluj:
 Po instalacji:
 ```powershell
 psconfig.exe -cmd upgrade -inplace b2b -wait -force
+```
+
+---
+
+### 3. Ograniczenie ekspozycji
+- ogranicz dostęp do SharePoint wyłącznie do zaufanych adresów i sieci VPN
+- przejrzyj publikowane aplikacje i reguły reverse proxy / WAF
+- wyłącz nieużywane komponenty oraz przestarzałe web party
+
+---
+
+### 4. Monitoring i walidacja
+- przeanalizuj logi IIS, ULS i zdarzenia bezpieczeństwa pod kątem nietypowych żądań
+- sprawdź, czy w farmie nie pojawiły się podejrzane skrypty, modyfikacje stron lub nowe konta
+- potwierdź po aktualizacji numer builda i poprawne zakończenie `PSConfig`
+
+---
+
+## Podsumowanie
+
+CVE-2026-32201 to przykład podatności, która formalnie wygląda umiarkowanie groźnie, ale operacyjnie może prowadzić do bardzo poważnego incydentu. W środowiskach SharePoint on-premise priorytetem powinno być szybkie wdrożenie poprawek, ograniczenie ekspozycji oraz aktywne monitorowanie oznak kompromitacji.
