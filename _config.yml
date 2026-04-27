@@ -1,3 +1,6 @@
 title: SharePoint Security
-description: Analiza podatności MS SharePoint, hardening i bezpieczeństwo
+description: Analityka podatnosci, hardening i threat intelligence dla srodowisk SharePoint on-premise
+lang: pl-PL
+timezone: Europe/Warsaw
 markdown: kramdown
+permalink: /:title/

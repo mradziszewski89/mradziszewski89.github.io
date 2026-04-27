@@ -1,0 +1,41 @@
+<svg width="640" height="420" viewBox="0 0 640 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="meshBg" x1="56" y1="42" x2="590" y2="384" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B2038"/>
+      <stop offset="1" stop-color="#07111F"/>
+    </linearGradient>
+    <linearGradient id="signalStroke" x1="80" y1="102" x2="558" y2="314" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8EE8FF"/>
+      <stop offset="1" stop-color="#F59E0B"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="640" height="420" rx="32" fill="url(#meshBg)"/>
+
+  <g opacity="0.22" stroke="#7DD3FC">
+    <path d="M72 70H568"/>
+    <path d="M72 140H568"/>
+    <path d="M72 210H568"/>
+    <path d="M72 280H568"/>
+    <path d="M72 350H568"/>
+    <path d="M96 46V374"/>
+    <path d="M176 46V374"/>
+    <path d="M256 46V374"/>
+    <path d="M336 46V374"/>
+    <path d="M416 46V374"/>
+    <path d="M496 46V374"/>
+  </g>
+
+  <path d="M84 248C116 248 128 146 168 146C208 146 215 266 256 266C297 266 302 115 344 115C386 115 391 294 434 294C477 294 501 182 557 182" stroke="url(#signalStroke)" stroke-width="8" stroke-linecap="round"/>
+
+  <g fill="#7DD3FC">
+    <circle cx="168" cy="146" r="9"/>
+    <circle cx="256" cy="266" r="9"/>
+    <circle cx="344" cy="115" r="9"/>
+  </g>
+
+  <g fill="#F59E0B">
+    <circle cx="434" cy="294" r="9"/>
+    <circle cx="557" cy="182" r="9"/>
+  </g>
+</svg>

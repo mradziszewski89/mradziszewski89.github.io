@@ -2,19 +2,132 @@
 layout: default
 ---
 
-{{ content }}
+{% assign featured_post = site.posts.first %}
+{% capture cleaned_content %}{{ content | strip_html | strip_newlines | strip }}{% endcapture %}
 
-<h2>📢 Najnowsze artykuły</h2>
+<section class="hero reveal">
+    <div class="hero__content">
+        <p class="eyebrow">{{ page.hero_eyebrow | default: "Security Intelligence" }}</p>
+        <h1>{{ page.hero_title | default: site.title }}</h1>
+        <p class="hero__summary">{{ page.hero_summary | default: site.description }}</p>
 
-{% if site.posts.size > 0 %}
-<ul>
-{% for post in site.posts %}
-  <li>
-    <a href="{{ post.url | relative_url }}">{{ post.title }}</a><br>
-    <small>{{ post.date | date: "%Y-%m-%d" }}</small>
-  </li>
-{% endfor %}
-</ul>
-{% else %}
-<p>Brak opublikowanych artykułów.</p>
-{% endif %}
+        <div class="hero__actions">
+            {% if featured_post %}
+            <a class="button button--primary" href="{{ featured_post.url | relative_url }}">Czytaj analize</a>
+            {% endif %}
+            <a class="button button--secondary" href="#articles">Przegladaj wpisy</a>
+        </div>
+
+        <ul class="hero__stats">
+            <li>
+                <strong>{{ site.posts.size }}</strong>
+                <span>opublikowane analizy</span>
+            </li>
+            <li>
+                <strong>24-72h</strong>
+                <span>typowe okno reakcji dla aktywnych zagrozen</span>
+            </li>
+            <li>
+                <strong>On-prem</strong>
+                <span>SharePoint, SQL, AD FS i hardening</span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="hero__visual">
+        <div class="hero-card hero-card--signal">
+            <p class="hero-card__eyebrow">Najnowszy brief</p>
+            {% if featured_post %}
+            <h2>{{ featured_post.title }}</h2>
+            <p>{{ featured_post.summary | default: featured_post.excerpt | strip_html | strip | truncate: 170 }}</p>
+            <div class="chip-row">
+                <span>{{ featured_post.categories[0] | default: "Article" }}</span>
+                <span>{{ featured_post.date | date: "%d.%m.%Y" }}</span>
+            </div>
+            {% else %}
+            <h2>Nowe wpisy pojawia sie tutaj automatycznie</h2>
+            <p>Po dodaniu artykulu ta sekcja zamieni sie w dynamicznie aktualizowany brief.</p>
+            {% endif %}
+        </div>
+
+        <div class="hero__graphic-wrap">
+            <img class="hero__graphic" src="{{ '/assets/security-orbit.svg' | relative_url }}" alt="Abstrakcyjna grafika warstwowej ochrony i monitoringu.">
+            <img class="hero__graphic hero__graphic--mesh" src="{{ '/assets/signal-mesh.svg' | relative_url }}" alt="" aria-hidden="true">
+        </div>
+    </div>
+</section>
+
+{% unless cleaned_content == "" %}
+<section class="editorial-note reveal">
+    <div class="section-heading">
+        <p class="eyebrow">Zakres serwisu</p>
+        <h2>Po co powstal ten serwis</h2>
+    </div>
+    <div class="editorial-note__panel article-prose">
+        {{ content }}
+    </div>
+</section>
+{% endunless %}
+
+<section class="insights reveal">
+    <div class="section-heading">
+        <p class="eyebrow">Co tu znajdziesz</p>
+        <h2>Nowoczesny widok na ryzyko operacyjne</h2>
+    </div>
+
+    <div class="insights__grid">
+        <article class="insight-card">
+            <span class="insight-card__index">01</span>
+            <h3>Analizy prowadzone przez sygnal</h3>
+            <p>Najpierw sygnal, potem kontekst techniczny i decyzje administracyjne, ktore maja znaczenie w pierwszych godzinach.</p>
+        </article>
+
+        <article class="insight-card">
+            <span class="insight-card__index">02</span>
+            <h3>Hardening bez szumu</h3>
+            <p>Konfiguracje, ograniczenia ekspozycji i kontrolki, ktore rzeczywiscie redukuja powierzchnie ataku w srodowiskach SharePoint.</p>
+        </article>
+
+        <article class="insight-card">
+            <span class="insight-card__index">03</span>
+            <h3>Briefy gotowe do decyzji</h3>
+            <p>Krotka forma dla zespolow, ktore potrzebuja szybkiej oceny: co patchowac, co monitorowac i gdzie spodziewac sie naduzyc.</p>
+        </article>
+    </div>
+</section>
+
+<section id="articles" class="feed-section reveal">
+    <div class="section-heading">
+        <p class="eyebrow">Przeglad analiz</p>
+        <h2>Najnowsze artykuly</h2>
+    </div>
+
+    {% if site.posts.size > 0 %}
+    <div class="feed-grid">
+        {% for post in site.posts %}
+        <article class="feed-card">
+            <a class="feed-card__media" href="{{ post.url | relative_url }}" aria-label="{{ post.title }}">
+                <img src="{{ '/assets/signal-mesh.svg' | relative_url }}" alt="" aria-hidden="true" loading="lazy">
+                <span class="feed-card__badge">{{ post.categories[0] | default: "Article" }}</span>
+            </a>
+
+            <div class="feed-card__body">
+                <p class="feed-card__date">{{ post.date | date: "%d.%m.%Y" }}</p>
+                <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+                <p>{{ post.summary | default: post.excerpt | strip_html | strip | truncate: 170 }}</p>
+
+                <div class="feed-card__tags">
+                    {% for tag in post.tags limit: 3 %}
+                    <span>{{ tag }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-state">
+        <p>Brak opublikowanych artykulow.</p>
+    </div>
+    {% endif %}
+</section>

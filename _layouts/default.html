@@ -1,26 +1,70 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="{{ site.lang | default: 'pl-PL' }}">
 <head>
     <meta charset="UTF-8">
-    <title>{{ page.title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% if page.title and page.title != site.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+    <meta name="description" content="{{ page.summary | default: page.excerpt | default: site.description | strip_html | strip | truncate: 155 }}">
+    <meta name="theme-color" content="#07111f">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
 </head>
-<body>
+<body class="page page--{{ page.layout | default: 'default' }}">
 
-<header>
-    <h1>🔐 SharePoint Security Blog</h1>
-    <p>SharePoint / SQL / AD FS Security</p>
-    <hr>
-</header>
+<div class="page-backdrop" aria-hidden="true">
+    <span class="page-backdrop__orb page-backdrop__orb--amber"></span>
+    <span class="page-backdrop__orb page-backdrop__orb--cyan"></span>
+</div>
 
-<main>
-{{ content }}
-</main>
+<div class="site-frame">
+    {% assign latest_post = site.posts.first %}
 
-<footer>
-    <hr>
-    <p>© 2026 SharePoint Security</p>
-</footer>
+    <header class="site-header">
+        <a class="brand" href="{{ '/' | relative_url }}" aria-label="{{ site.title }}">
+            <span class="brand__mark" aria-hidden="true">
+                <svg viewBox="0 0 64 64" role="img">
+                    <defs>
+                        <linearGradient id="brand-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#7dd3fc"></stop>
+                            <stop offset="100%" stop-color="#f59e0b"></stop>
+                        </linearGradient>
+                    </defs>
+                    <path d="M32 5 12 13v17c0 13.3 8.6 25.4 20 29 11.4-3.6 20-15.7 20-29V13L32 5Z" fill="#07111f" fill-opacity="0.78" stroke="url(#brand-gradient)" stroke-width="2.5"></path>
+                    <path d="M22 33.5 29 40l14-16" fill="none" stroke="#e2f3ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"></path>
+                </svg>
+            </span>
+            <span class="brand__copy">
+                <strong>{{ site.title }}</strong>
+                <span>Threat intelligence dla farm SharePoint</span>
+            </span>
+        </a>
+
+        <nav class="site-nav" aria-label="Glowna nawigacja">
+            <a href="{{ '/' | relative_url }}">Start</a>
+            <a href="{{ '/' | relative_url }}#articles">Artykuly</a>
+            {% if latest_post %}
+            <a href="{{ latest_post.url | relative_url }}">Najnowszy brief</a>
+            {% endif %}
+        </nav>
+    </header>
+
+    <main class="site-main">
+        {{ content }}
+    </main>
+
+    <footer class="site-footer">
+        <div>
+            <p class="site-footer__title">{{ site.title }}</p>
+            <p>{{ site.description }}</p>
+        </div>
+        <div class="site-footer__meta">
+            <span>{{ 'now' | date: '%Y' }}</span>
+            <span>GitHub Pages / Jekyll</span>
+        </div>
+    </footer>
+</div>
 
 </body>
 </html>

@@ -4,6 +4,17 @@ title: "Patch Tuesday – kwiecień 2026: aktywnie wykorzystywany zero-day w Mic
 date: 2026-04-27
 categories: [SharePoint, Security, Vulnerabilities]
 tags: [SharePoint, CVE, ZeroDay, CyberSecurity, PatchTuesday, OnPremise]
+summary: "Techniczny brief o aktywnie wykorzystywanym zero-day w Microsoft SharePoint z naciskiem na ekspozycje on-premise, ryzyko sesji i dzialania naprawcze."
+eyebrow: "Brief zagrozenia"
+severity: "High / Critical in practice"
+status: "Actively exploited"
+scope: "SharePoint Server 2016, 2019, Subscription Edition"
+priority: "Patch in the first maintenance window"
+focus: "Patch, PSConfig, exposure controls"
+key_actions:
+  - Zainstaluj odpowiednie poprawki KB i uruchom PSConfig bez odkladania.
+  - Ogranicz ekspozycje farmy do zaufanych sieci oraz publikacji chronionych przez reverse proxy lub WAF.
+  - Przeanalizuj logi IIS, ULS i oznaki naduzyc sesji oraz nietypowego JavaScript.
 ---
 
 ## 🚨 Wprowadzenie

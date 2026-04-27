@@ -2,11 +2,77 @@
 layout: default
 ---
 
-<article>
-    <h1>{{ page.title }}</h1>
-    <p><i>{{ page.date | date: "%Y-%m-%d" }}</i></p>
+<article class="post-shell">
+    <header class="post-hero reveal">
+        <div class="post-hero__copy">
+            <p class="eyebrow">{{ page.eyebrow | default: "Brief zagrozenia" }}</p>
+            <h1>{{ page.title }}</h1>
+            <p class="post-hero__summary">{{ page.summary | default: page.excerpt | strip_html | strip }}</p>
 
-    <hr>
+            <div class="post-meta">
+                <span>{{ page.date | date: "%d.%m.%Y" }}</span>
+                {% if page.severity %}
+                <span>{{ page.severity }}</span>
+                {% endif %}
+                {% if page.status %}
+                <span>{{ page.status }}</span>
+                {% endif %}
+            </div>
 
-    {{ content }}
+            {% if page.tags %}
+            <div class="tag-row">
+                {% for tag in page.tags %}
+                <span>{{ tag }}</span>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="post-hero__visual">
+            <div class="signal-panel">
+                <p class="signal-panel__eyebrow">Szybkie podsumowanie</p>
+                <ul class="signal-list">
+                    <li>
+                        <span>Scope</span>
+                        <strong>{{ page.scope | default: "SharePoint on-premise" }}</strong>
+                    </li>
+                    <li>
+                        <span>Priority</span>
+                        <strong>{{ page.priority | default: "Immediate review" }}</strong>
+                    </li>
+                    <li>
+                        <span>Focus</span>
+                        <strong>{{ page.focus | default: "Patch, exposure, monitoring" }}</strong>
+                    </li>
+                </ul>
+            </div>
+
+            <img class="post-hero__graphic" src="{{ '/assets/security-orbit.svg' | relative_url }}" alt="" aria-hidden="true">
+        </div>
+    </header>
+
+    <div class="post-layout">
+        <aside class="post-layout__sidebar reveal">
+            <div class="sticky-card">
+                <p class="sticky-card__eyebrow">Szybka reakcja</p>
+                <ul class="quick-list">
+                    {% if page.key_actions %}
+                        {% for action in page.key_actions %}
+                        <li>{{ action }}</li>
+                        {% endfor %}
+                    {% else %}
+                        <li>Zweryfikuj ekspozycje farmy.</li>
+                        <li>Zastosuj poprawki i uruchom proces aktualizacji.</li>
+                        <li>Przegladaj telemetrie pod katem oznak naduzyc.</li>
+                    {% endif %}
+                </ul>
+            </div>
+        </aside>
+
+        <div class="post-layout__content reveal">
+            <div class="article-prose">
+                {{ content }}
+            </div>
+        </div>
+    </div>
 </article>

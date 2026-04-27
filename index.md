@@ -1,16 +1,9 @@
 ---
 layout: home
-title: Home
+title: SharePoint Security
+hero_eyebrow: Threat Intelligence
+hero_title: Nowoczesne analizy zagrozen dla srodowisk SharePoint
+hero_summary: Techniczne briefy o podatnosciach, hardeningu i ryzyku operacyjnym dla zespolow, ktore utrzymuja Microsoftowe systemy on-premise.
 ---
 
-{% assign latest_post = site.posts.first %}
-
-## 🚨 Latest Threat
-
-**CVE-2026-32201 – aktywnie wykorzystywany SharePoint zero-day**
-
-{% if latest_post %}
-➡️ [Czytaj analizę]({{ latest_post.url | relative_url }})
-{% else %}
-Brak opublikowanych artykułów.
-{% endif %}
+Serwis koncentruje sie na praktycznych wnioskach dla administratorow i zespolow bezpieczenstwa: co zostalo wlasnie ujawnione, jak szybko trzeba reagowac i ktore decyzje rzeczywiscie zmniejszaja ryzyko w farmach SharePoint.
