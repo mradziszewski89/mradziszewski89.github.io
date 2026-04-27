@@ -3,20 +3,8 @@ layout: home
 title: Home
 ---
 
-# 🔐 SharePoint Security Blog
+## 🚨 Latest Threat
 
-Analiza podatności, hardening i bezpieczeństwo SharePoint SE.
+**CVE-2026-32201 – aktywnie wykorzystywany SharePoint zero-day**
 
----
-
-## 📰 Najnowsze artykuły
-
-<ul>
-{% for post in site.posts %}
-  <li>
-    <a href="{{ post.url }}">{{ post.title }}</a>
-    <br>
-    <small>{{ post.date | date: "%Y-%m-%d" }}</small>
-  </li>
-{% endfor %}
-</ul>
+➡️ [Czytaj analizę](./2026/04/27/sharepoint-zero-day.html)
