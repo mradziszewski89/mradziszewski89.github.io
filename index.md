@@ -7,4 +7,4 @@ title: Home
 
 **CVE-2026-32201 – aktywnie wykorzystywany SharePoint zero-day**
 
-➡️ [Czytaj analizę](./Patch-Tuesday-kwiecień-2026.md)
+➡️ [Czytaj analizę](./2026-04-27-sharepoint-zero-day.md)
