@@ -2,6 +2,7 @@
 layout: post
 title: "Patch Tuesday – kwiecień 2026: aktywnie wykorzystywany zero-day w Microsoft SharePoint (CVE-2026-32201)"
 date: 2026-04-27
+publish_at: 2026-04-27 09:00:00 +0200
 categories: [SharePoint, Security, Vulnerabilities]
 tags: [SharePoint, CVE, ZeroDay, CyberSecurity, PatchTuesday, OnPremise]
 summary: "Techniczny brief o aktywnie wykorzystywanym zero-day w Microsoft SharePoint z naciskiem na ekspozycje on-premise, ryzyko sesji i dzialania naprawcze."

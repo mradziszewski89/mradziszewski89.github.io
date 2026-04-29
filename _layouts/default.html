@@ -6,12 +6,14 @@
     <title>{% if page.title and page.title != site.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
     <meta name="description" content="{{ page.summary | default: page.excerpt | default: site.description | strip_html | strip | truncate: 155 }}">
     <meta name="theme-color" content="#07111f">
+    <script>document.documentElement.classList.add('js');</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/enhancements.css' | relative_url }}">
 </head>
-<body class="page page--{{ page.layout | default: 'default' }}">
+<body class="page page--{{ page.layout | default: 'default' }}" data-site-timezone="{{ site.timezone | default: 'Europe/Warsaw' }}" data-github-portfolio-user="{{ site.github_portfolio_user | default: 'mradziszewski' }}">
 
 <div class="page-backdrop" aria-hidden="true">
     <span class="page-backdrop__orb page-backdrop__orb--amber"></span>
@@ -19,8 +21,6 @@
 </div>
 
 <div class="site-frame">
-    {% assign latest_post = site.posts.first %}
-
     <header class="site-header">
         <a class="brand" href="{{ '/' | relative_url }}" aria-label="{{ site.title }}">
             <span class="brand__mark" aria-hidden="true">
@@ -44,9 +44,7 @@
         <nav class="site-nav" aria-label="Glowna nawigacja">
             <a href="{{ '/' | relative_url }}">Start</a>
             <a href="{{ '/' | relative_url }}#articles">Artykuly</a>
-            {% if latest_post %}
-            <a href="{{ latest_post.url | relative_url }}">Najnowszy brief</a>
-            {% endif %}
+            <a href="{{ '/portfolio/' | relative_url }}">Portfolio</a>
         </nav>
     </header>
 
@@ -66,5 +64,6 @@
     </footer>
 </div>
 
+<script defer src="{{ '/assets/site.js' | relative_url }}"></script>
 </body>
 </html>

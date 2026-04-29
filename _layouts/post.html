@@ -2,6 +2,8 @@
 layout: default
 ---
 
+{% assign publish_value = page.publish_at | default: page.date %}
+
 <article class="post-shell">
     <header class="post-hero reveal">
         <div class="post-hero__copy">
@@ -10,7 +12,7 @@ layout: default
             <p class="post-hero__summary">{{ page.summary | default: page.excerpt | strip_html | strip }}</p>
 
             <div class="post-meta">
-                <span>{{ page.date | date: "%d.%m.%Y" }}</span>
+                <span>{{ publish_value | date: "%d.%m.%Y" }}</span>
                 {% if page.severity %}
                 <span>{{ page.severity }}</span>
                 {% endif %}
@@ -51,7 +53,13 @@ layout: default
         </div>
     </header>
 
-    <div class="post-layout">
+    <div class="publication-gate reveal" data-publication-gate hidden>
+        <p class="publication-gate__eyebrow">Zaplanowana publikacja</p>
+        <h2>Ten artykul zostanie odblokowany automatycznie.</h2>
+        <p>Pelna tresc bedzie widoczna od <strong data-publication-date>{{ publish_value | date: "%d.%m.%Y" }}</strong>. GitHub Pages nie wymaga do tego kolejnego wdrozenia.</p>
+    </div>
+
+    <div class="post-layout" data-article-layout data-article-publish-at="{{ publish_value | date: '%Y-%m-%dT%H:%M:%S%:z' }}" hidden>
         <aside class="post-layout__sidebar reveal">
             <div class="sticky-card">
                 <p class="sticky-card__eyebrow">Szybka reakcja</p>

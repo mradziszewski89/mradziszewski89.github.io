@@ -2,6 +2,7 @@
 layout: post
 title: "March 2026 Patch Tuesday: SharePoint dostaje trzy latki i jedna pulapke operacyjna"
 date: 2026-04-27 20:00:00 +0200
+publish_at: 2026-04-29 09:00:00 +0200
 categories: [SharePoint, Security, PatchTuesday]
 tags: [SharePoint, PatchTuesday, CVE, OnPremise, SPSE, Patching]
 summary: "Brief o marcowym Patch Tuesday 2026 dla SharePoint: trzy podatnosci, w tym krytyczne RCE, oraz istotna pulapka aktualizacyjna dla SharePoint Subscription Edition."

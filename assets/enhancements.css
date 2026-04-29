@@ -1,0 +1,238 @@
+[hidden] {
+    display: none !important;
+}
+
+.publication-gate,
+.notice-card,
+.profile-card,
+.repo-card,
+.page-hero,
+.page-content {
+    background: linear-gradient(180deg, rgba(10, 23, 39, 0.9), rgba(8, 17, 31, 0.78));
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    position: relative;
+}
+
+.publication-gate,
+.notice-card,
+.profile-card,
+.repo-card,
+.page-hero,
+.page-content {
+    padding: 24px;
+}
+
+.publication-gate {
+    overflow: hidden;
+}
+
+.publication-gate::before,
+.notice-card::before,
+.profile-card::before,
+.repo-card::before,
+.page-hero::before {
+    content: "";
+    inset: 0;
+    pointer-events: none;
+    position: absolute;
+    background:
+        radial-gradient(circle at top right, rgba(125, 211, 252, 0.12), transparent 30%),
+        linear-gradient(120deg, rgba(245, 158, 11, 0.08), transparent 30%);
+}
+
+.publication-gate__eyebrow,
+.notice-card__eyebrow,
+.profile-card__eyebrow {
+    color: var(--accent);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    margin: 0 0 12px;
+    position: relative;
+    text-transform: uppercase;
+    z-index: 1;
+}
+
+.publication-gate h2,
+.notice-card h3,
+.page-hero h1,
+.profile-card h2,
+.portfolio-section h2,
+.repo-card h3 {
+    color: var(--title);
+    font-family: "Space Grotesk", "Segoe UI", sans-serif;
+    letter-spacing: -0.03em;
+    margin: 0 0 12px;
+    position: relative;
+    z-index: 1;
+}
+
+.publication-gate p,
+.notice-card p,
+.page-hero__summary,
+.page-content,
+.profile-card__summary,
+.portfolio-note,
+.repo-card p,
+.repo-card li {
+    color: var(--text-muted);
+    line-height: 1.75;
+    position: relative;
+    z-index: 1;
+}
+
+.page-hero {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    justify-content: space-between;
+}
+
+.page-hero__copy {
+    max-width: 720px;
+    position: relative;
+    z-index: 1;
+}
+
+.page-hero h1 {
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+}
+
+.page-content {
+    overflow: hidden;
+}
+
+.page-content > :first-child {
+    margin-top: 0;
+}
+
+.page-content > :last-child {
+    margin-bottom: 0;
+}
+
+.portfolio-shell,
+.portfolio-section {
+    display: grid;
+    gap: 24px;
+}
+
+.repo-stats {
+    display: grid;
+    gap: 14px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-top: 22px;
+    position: relative;
+    z-index: 1;
+}
+
+.repo-stats div {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(125, 211, 252, 0.12);
+    border-radius: 18px;
+    min-height: 108px;
+    padding: 18px;
+}
+
+.repo-stats strong {
+    color: var(--title);
+    display: block;
+    font-family: "Space Grotesk", "Segoe UI", sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.repo-stats span {
+    color: var(--text-muted);
+    display: block;
+    font-size: 0.92rem;
+    line-height: 1.45;
+}
+
+.repo-links {
+    margin-top: 18px;
+    position: relative;
+    z-index: 1;
+}
+
+.portfolio-grid {
+    display: grid;
+    gap: 22px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.repo-card:hover,
+.notice-card:hover,
+.profile-card:hover,
+.publication-gate:hover {
+    border-color: var(--border-strong);
+    transform: translateY(-4px);
+}
+
+.repo-card__meta,
+.repo-card__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.repo-card__meta {
+    margin-bottom: 16px;
+}
+
+.repo-card__meta span,
+.repo-card__chips span {
+    background: rgba(125, 211, 252, 0.08);
+    border: 1px solid rgba(125, 211, 252, 0.14);
+    border-radius: 999px;
+    color: var(--title);
+    font-size: 0.82rem;
+    padding: 8px 12px;
+}
+
+.repo-card__links {
+    align-items: center;
+    display: flex;
+    gap: 14px;
+    justify-content: space-between;
+    margin-top: 18px;
+}
+
+.repo-card__links a {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.repo-card__links a:hover {
+    color: #b6ecff;
+}
+
+.repo-card__updated {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.portfolio-callout {
+    display: grid;
+    gap: 22px;
+}
+
+@media (max-width: 1024px) {
+    .portfolio-grid,
+    .repo-stats {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 760px) {
+    .page-hero {
+        padding: 20px;
+    }
+
+    .repo-card__links {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
