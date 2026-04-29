@@ -149,7 +149,7 @@
             return;
         }
 
-        var username = document.body.dataset.githubPortfolioUser || "mradziszewski";
+        var username = document.body.dataset.githubPortfolioUser || "mradziszewski89";
         var emptyState = document.querySelector("[data-portfolio-empty]");
         var profileCard = document.querySelector("[data-github-profile]");
 
